@@ -1,10 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://nbsmaium6rru"]
+[gd_scene load_steps=6 format=3 uid="uid://nbsmaium6rru"]
 
 [ext_resource type="PackedScene" uid="uid://rl1l3jlbfuwt" path="res://Art/Models/Ship/Ship.glb" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://ddxedcmp55vr5" path="res://Scripts/Player.gd" id="1_x3d5u"]
 
-[node name="Player" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3d5u"]
+size = Vector3(2.5, 1, 2.767)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x3d5u"]
+direction = Vector3(0, 0, 0)
+spread = 30.0
+flatness = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_b43ah"]
+
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_x3d5u")
 
 [node name="Ship" parent="." instance=ExtResource("1_um8lo")]
-transform = Transform3D(0.99951, -0.0174414, 0.0260069, 0.0169128, 0.999649, 0.0204094, -0.0263537, -0.0199596, 0.999453, 0, 0, 0)
+transform = Transform3D(0.349828, -0.00610449, 0.0091024, 0.00591948, 0.349877, 0.00714331, -0.00922379, -0.00698586, 0.349809, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 1.82
+omni_range = 1.164
+
+[node name="OmniLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326375, -0.183401, -1.04967)
+light_energy = 2.79
+
+[node name="OmniLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253095, -0.183401, -1.04967)
+light_energy = 2.79
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 1.48961)
+light_color = Color(0.598467, 0.500757, 0.166417, 1)
+light_energy = 2.79
+omni_range = 1.201
+
+[node name="OmniLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0.201832, -0.688602)
+light_color = Color(0.598467, 0.500757, 0.166417, 1)
+light_energy = 2.79
+spot_angle = 75.86
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178558, 0, -0.00308394)
+shape = SubResource("BoxShape3D_x3d5u")
+
+[node name="CPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.23703)
+amount = 20
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_x3d5u")
+draw_pass_1 = SubResource("BoxMesh_b43ah")

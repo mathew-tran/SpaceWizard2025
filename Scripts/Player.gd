@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 
 var TargetPosition = Vector3.ZERO
 var CameraRef : Camera3D
@@ -6,7 +6,7 @@ var CameraRef : Camera3D
 @export var PlaneNodePath : CSGMesh3D
 
 
-var ShipSpeed = 20
+var ShipSpeed = 600
 func _ready() -> void:
 	TargetPosition =  global_position
 	CameraRef = get_viewport().get_camera_3d()
@@ -15,17 +15,21 @@ func _ready() -> void:
 func MoveTowardsTargetPosition(delta):
 	if global_position.distance_to(TargetPosition) > 1:
 		var dir = (TargetPosition - global_position).normalized()
-		global_position += dir * ShipSpeed * delta
+		velocity = dir * ShipSpeed * delta
+		if move_and_slide():
+			TargetPosition = global_position
 		look_at(TargetPosition)
+		$CPUParticles3D.emitting = true
 	else:
 		TargetPosition = global_position
+		$CPUParticles3D.emitting = false
 
 	
 	
 func _process(delta: float) -> void:
 	MoveTowardsTargetPosition(delta)
 	
-	if Input.is_action_just_released("click"):
+	if Input.is_action_pressed("click"):
 		var position2D = get_viewport().get_mouse_position()
 		var position3D = PlaneNodePath.mesh.get_aabb().intersects_ray(
 				CameraRef.project_ray_origin(position2D),

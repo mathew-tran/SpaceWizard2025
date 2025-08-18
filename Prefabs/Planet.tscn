@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvp8a1hc5swb1"]
+[gd_scene load_steps=8 format=3 uid="uid://cvp8a1hc5swb1"]
 
 [ext_resource type="Script" uid="uid://buyegfhcwq5o8" path="res://Scripts/Planet.gd" id="1_8pbx0"]
 [ext_resource type="PackedScene" uid="uid://dxcyexyntoyw5" path="res://Art/Models/Planet1/Planet1.glb" id="1_15rw5"]
@@ -45,10 +45,14 @@ _data = {
 height = 3.90967
 radius = 2.78711
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_8pbx0"]
+radius = 2.7731
+
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_8pbx0")
 
 [node name="Planet1" parent="." instance=ExtResource("1_15rw5")]
+transform = Transform3D(2.51, 0, 0, 0, 2.51, 0, 0, 0, 2.51, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -61,6 +65,19 @@ speed_scale = 0.2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73494, 0)
 shape = SubResource("CylinderShape3D_8pbx0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94877, 0)
+light_energy = 0.999
+light_indirect_energy = 4.717
+light_size = 0.065
+omni_range = 2.777
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_8pbx0")
 
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

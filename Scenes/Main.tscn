@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl6g8cl5l3x8s"]
+[gd_scene load_steps=9 format=3 uid="uid://cl6g8cl5l3x8s"]
 
 [ext_resource type="Script" uid="uid://dthdg5jq5kvlw" path="res://Scripts/CustomCamera.gd" id="1_kln2b"]
 [ext_resource type="PackedScene" uid="uid://nbsmaium6rru" path="res://Prefabs/Player.tscn" id="1_r150o"]
@@ -12,6 +12,24 @@ size = Vector3(200, 0.1, 200)
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.12549)
 
+[sub_resource type="FogMaterial" id="FogMaterial_rgh2o"]
+density = -5.757
+
+[sub_resource type="Environment" id="Environment_pbw6q"]
+background_mode = 2
+background_energy_multiplier = 0.0
+ambient_light_energy = 1.65
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(3.76021e-09, 1.12806e-09, 0.00751345, 1)
+fog_light_energy = 0.0
+fog_sun_scatter = 0.14
+fog_density = 1.0
+fog_sky_affect = 0.474
+fog_height = -732.97
+fog_height_density = 3.3684
+volumetric_fog_enabled = true
+
 [node name="Node3D" type="Node3D"]
 
 [node name="CustomCamera" type="Camera3D" parent="." node_paths=PackedStringArray("FollowObject")]
@@ -21,12 +39,15 @@ FollowObject = NodePath("../Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.963747, -0.266818, 0, 0.266818, 0.963747, 0, 0, 0)
+light_color = Color(0.13913, 0.0686373, 0.427084, 1)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0520745, 0.998643, 0, -0.998643, -0.0520745, 0, 0, 0)
+light_color = Color(0.13913, 0.0686373, 0.427084, 1)
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.703593, -0.0370043, 0.709639, -0.710603, -0.0366393, 0.702639, 0, -0.998643, -0.0520745, 0, 0, 0)
+light_color = Color(0.13913, 0.0686373, 0.427084, 1)
 
 [node name="Player" parent="." node_paths=PackedStringArray("PlaneNodePath") instance=ExtResource("1_r150o")]
 PlaneNodePath = NodePath("../Plane")
@@ -41,3 +62,13 @@ material = SubResource("StandardMaterial3D_kln2b")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InfoPanel" parent="CanvasLayer" instance=ExtResource("4_rgh2o")]
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477871, 0)
+shape = 4
+material = SubResource("FogMaterial_rgh2o")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pbw6q")
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="."]
