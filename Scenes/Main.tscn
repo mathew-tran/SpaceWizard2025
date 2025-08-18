@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl6g8cl5l3x8s"]
+[gd_scene load_steps=7 format=3 uid="uid://cl6g8cl5l3x8s"]
 
-[ext_resource type="PackedScene" uid="uid://rl1l3jlbfuwt" path="res://Art/Models/Ship/Ship.glb" id="1_r150o"]
+[ext_resource type="Script" uid="uid://dthdg5jq5kvlw" path="res://Scripts/CustomCamera.gd" id="1_kln2b"]
+[ext_resource type="PackedScene" uid="uid://nbsmaium6rru" path="res://Prefabs/Player.tscn" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://cvp8a1hc5swb1" path="res://Prefabs/Planet.tscn" id="2_idj7w"]
+[ext_resource type="PackedScene" uid="uid://datulnnuqspkj" path="res://Prefabs/InfoPanel.tscn" id="4_rgh2o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_idj7w"]
+size = Vector3(200, 0.1, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kln2b"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.12549)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Ship" parent="." instance=ExtResource("1_r150o")]
-transform = Transform3D(0.999955, 0.00945954, 0, -0.00945954, 0.999955, 0, 0, 0, 1, 1.05536, 0.684361, -0.535013)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0466575, 0.50517, -0.861758, 0.173281, 0.853711, 0.491071, 0.983767, -0.126414, -0.127368, -4.33381, 2.51052, 0)
+[node name="CustomCamera" type="Camera3D" parent="." node_paths=PackedStringArray("FollowObject")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.514, 19.46, 0.07)
+script = ExtResource("1_kln2b")
+FollowObject = NodePath("../Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.963747, -0.266818, 0, 0.266818, 0.963747, 0, 0, 0)
@@ -18,3 +27,17 @@ transform = Transform3D(1, 0, 0, 0, -0.0520745, 0.998643, 0, -0.998643, -0.05207
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.703593, -0.0370043, 0.709639, -0.710603, -0.0366393, 0.702639, 0, -0.998643, -0.0520745, 0, 0, 0)
+
+[node name="Player" parent="." node_paths=PackedStringArray("PlaneNodePath") instance=ExtResource("1_r150o")]
+PlaneNodePath = NodePath("../Plane")
+
+[node name="Planet" parent="." instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+
+[node name="Plane" type="CSGMesh3D" parent="."]
+mesh = SubResource("BoxMesh_idj7w")
+material = SubResource("StandardMaterial3D_kln2b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InfoPanel" parent="CanvasLayer" instance=ExtResource("4_rgh2o")]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://nbsmaium6rru"]
+
+[ext_resource type="PackedScene" uid="uid://rl1l3jlbfuwt" path="res://Art/Models/Ship/Ship.glb" id="1_um8lo"]
+[ext_resource type="Script" uid="uid://ddxedcmp55vr5" path="res://Scripts/Player.gd" id="1_x3d5u"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_x3d5u")
+
+[node name="Ship" parent="." instance=ExtResource("1_um8lo")]
+transform = Transform3D(0.99951, -0.0174414, 0.0260069, 0.0169128, 0.999649, 0.0204094, -0.0263537, -0.0199596, 0.999453, 0, 0, 0)

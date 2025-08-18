@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvp8a1hc5swb1"]
+
+[ext_resource type="Script" uid="uid://buyegfhcwq5o8" path="res://Scripts/Planet.gd" id="1_8pbx0"]
+[ext_resource type="PackedScene" uid="uid://dxcyexyntoyw5" path="res://Art/Models/Planet1/Planet1.glb" id="1_15rw5"]
+
+[sub_resource type="Animation" id="Animation_d7qt2"]
+resource_name = "anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planet1:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nex03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planet1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bue7s"]
+_data = {
+&"RESET": SubResource("Animation_nex03"),
+&"anim": SubResource("Animation_d7qt2")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8pbx0"]
+height = 3.90967
+radius = 2.78711
+
+[node name="Planet" type="Node3D"]
+script = ExtResource("1_8pbx0")
+
+[node name="Planet1" parent="." instance=ExtResource("1_15rw5")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bue7s")
+}
+speed_scale = 0.2
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73494, 0)
+shape = SubResource("CylinderShape3D_8pbx0")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]
