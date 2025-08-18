@@ -1,0 +1,21 @@
+~ start
+
+Nathan: Whats up
+
+if State.AppleStatus == "nothing":
+	- Give apple to mark
+		set State.AppleStatus = "has"
+		Nathan: Here's an apple, you idiot.
+		=> start
+	- Leave
+	=> END
+elif State.AppleStatus == "has":
+	Nathan : You has apple! GO AWAY
+	=> END
+	
+
+
+~ pick_apple
+Nathan: Here, take the apple
+Nathan: *Hands Apple*
+set State.AppleStatus = "has"

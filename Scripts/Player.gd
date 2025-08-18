@@ -5,10 +5,12 @@ var CameraRef : Camera3D
 
 @export var PlaneNodePath : CSGMesh3D
 
+
 var ShipSpeed = 20
 func _ready() -> void:
 	TargetPosition =  global_position
 	CameraRef = get_viewport().get_camera_3d()
+	DialogueManager.show_example_dialogue_balloon(load("res://Content/Dialogues/OpeningDialogue.dialogue"), "start")
 	
 func MoveTowardsTargetPosition(delta):
 	if global_position.distance_to(TargetPosition) > 1:
