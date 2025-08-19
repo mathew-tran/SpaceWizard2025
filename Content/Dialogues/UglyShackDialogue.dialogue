@@ -1,8 +1,25 @@
 ~ start
 
 You see an ugly shack floating in space.
-if State.MainProgression == "DELIVER_TO_SHACK":
+if State.MainProgression == "1_DELIVER_TO_SHACK":
 	do State.ClearObjective()
-	YOU: What an odd taste in
-	
-	
+	YOU: What an odd taste.
+	You hold out the package and read the deliver instructions.
+	A holodisk drops out, begins to eject out light and then begins to play.
+	An elder man in a wizard costume materializes into a space above the holodisk.
+	HOLODISK: ... It took me a while to find you.
+	HOLODISK: Your mother.. she seems to not want to talk to me, and she definitely doesn't want me to talk to you either.
+	HOLODISK: ... I don't know if you remember me.
+	The elder man seems silent and hesitant.
+	The elder man begins to visibly sweat and begins to look nervous.
+	HOLODISK: I am a bit on the run. But I'd like to meet you. 
+	HOLODISK: There is a place far north of here. Called Markton. Meet me there when you can.
+	He quickly presses a button, then the holodisk closes.
+	..
+	You wonder who this man is. An uncle -- or your father? Your mother seems to be tight lipped when it comes to other family.
+	Whoever it is. You want to find out.
+	But first, let's head back to Asteroid City and finish up work.
+	set State.MainProgression = "2_DELIVERED_TO_SHACK"
+	do State.ChangeObjective("Go back to Asteroid City")
+if State.MainProgression == "2_DELIVERED_TO_SHACK":
+	Time to head back and finish for the day. No use sitting around here.

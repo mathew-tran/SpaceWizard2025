@@ -3,21 +3,40 @@
 if State.MainProgression == "START":
 	do State.ClearObjective()
 	SUPERVISOR: Hey, hey. Were you taking a break again?
-	SUPERVISOR: We got a lot of packages to deliver today. 
+	SUPERVISOR: We got one more package to deliver today.
 	SUPERVISOR: If I find you taking any breaks longer than 15 minutes. I'll have to deduct your pay.
 	SUPERVISOR: Understood?
 	- YES
 		SUPERVISOR: Good. Well a package needs to be delivered. Just west of here.
-		SUPERVISOR: Come back as soon as you can, okay? I really need your help today.
+		SUPERVISOR: The sooner you finish your work, the sooner we both can get out for the day.
 		YOU: Got it.
 		Your supervisor has been tense for the past couple of months. 
 		Galactic Delivery hasn't performed well lately. People have been leaving in droves finding better work in other Galaxies.
 		You happen to be one of the few who has stayed at this company for the past couple years. 
 		Holding out. Hoping something better will come in the near future.
-		set State.MainProgression = "DELIVER_TO_SHACK"
+		set State.MainProgression = "1_DELIVER_TO_SHACK"
 		do State.ChangeObjective("Deliver package to the Shack, west of Asteroid City")
-if State.MainProgression == "DELIVER_TO_SHACK":
+if State.MainProgression == "1_DELIVER_TO_SHACK":
 	SUPERVISOR: Remember, it's West of here!
 	SUPERVISOR: You should get a new GPS. When you got the cash. It'll help you alot!
 	YOU: Alright, I'll see you around.
 	
+if State.MainProgression == "2_DELIVERED_TO_SHACK":
+	do State.ClearObjective()
+	SUPERVISOR: Thanks for delivering that final package. Looks like we are done for the day.
+	Your supervisor notices you look a bit off.
+	SUPERVISOR: Something happen?
+	You explain the recent delivery and what it entailed.
+	SUPERVISOR: Well. It wouldn't hurt to check it out, would it?
+	SUPERVISOR: If you need the time off, I'll figure something out.
+	You shake your head
+	YOU: .. I
+	SUPERVISOR: Take it.
+	You feel a bit awkward, and shy.
+	You nod your head and then leave.
+	SUPERVISOR: Tell me what happens!
+	set State.MainProgression = "3_TO_MARKTON"
+	do State.ChangeObjective("Go to Markton, Far north of Asteroid City")
+	
+if State.MainProgression == "3_TO_MARKTON":
+	SUPERVISOR: Get out of here. and go find him. I can take your shift. Now go.
