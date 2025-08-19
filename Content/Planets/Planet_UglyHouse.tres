@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlanetData" load_steps=2 format=3 uid="uid://dqm2o48utnpfa"]
+
+[ext_resource type="Script" uid="uid://ccr3iavkyys7" path="res://Content/PlanetData.gd" id="1_fcso7"]
+
+[resource]
+script = ExtResource("1_fcso7")
+PlanetName = "Ugly Shack"
+Dialogue = "uid://cfmeg7tqrgdfu"
+PlanetMesh = "uid://djir8wkiee5xl"
+metadata/_custom_type_script = "uid://ccr3iavkyys7"

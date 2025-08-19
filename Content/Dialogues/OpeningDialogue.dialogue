@@ -1,21 +1,24 @@
 ~ start
 
-Nathan: Whats up
+It's 2095.
+...
+Space travel is now common place. Even for the common folk.
+The Earth as you may know it -- became uninhabitable just a few years ago.
+Thankfully not long before that happened, We have found ways of habitating anywhere we want.
 
-if State.AppleStatus == "nothing":
-	- Give apple to mark
-		set State.AppleStatus = "has"
-		Nathan: Here's an apple, you idiot.
-		=> start
-	- Leave
-	=> END
-elif State.AppleStatus == "has":
-	Nathan : You has apple! GO AWAY
-	=> END
-	
+It's just another day on the outskirts of the solar system.
 
+A ringing noise begins to emit
 
-~ pick_apple
-Nathan: Here, take the apple
-Nathan: *Hands Apple*
-set State.AppleStatus = "has"
+SUPERVISOR: Hey! It's time to get moving! Make sure you get to Asteroid city ASAP!
+
+YOU: ..
+YOU: It's time to head back. It looks like my boss found out I was taking a break.
+
+On your off time, you commonly like to stare at the stars and wonder if there is anything better out there.
+You work a 12 hour shift for a company called Galactic Delivery.
+You deliver parcels from place to place. Spanning across the Milky Way Galaxy.
+...
+You begin heading towards Asteroid City. Which should be NORTH of here.
+
+do State.ChangeObjective("Go to Asteroid City")

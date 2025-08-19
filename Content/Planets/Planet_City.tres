@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlanetData" load_steps=2 format=3 uid="uid://bdl3tu7ie3wc1"]
+
+[ext_resource type="Script" uid="uid://ccr3iavkyys7" path="res://Content/PlanetData.gd" id="1_y6pi2"]
+
+[resource]
+script = ExtResource("1_y6pi2")
+PlanetName = "Asteroid City"
+Dialogue = "uid://dqr3ty52ktq2t"
+PlanetMesh = "uid://dxcyexyntoyw5"
+metadata/_custom_type_script = "uid://ccr3iavkyys7"

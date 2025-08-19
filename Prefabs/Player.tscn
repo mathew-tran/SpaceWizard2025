@@ -18,7 +18,7 @@ scale_max = 0.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_b43ah"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_x3d5u")
 
 [node name="Ship" parent="." instance=ExtResource("1_um8lo")]
@@ -54,6 +54,7 @@ shape = SubResource("BoxShape3D_x3d5u")
 
 [node name="CPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.23703)
+emitting = false
 amount = 20
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_x3d5u")

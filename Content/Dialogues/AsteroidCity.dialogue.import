@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dqr3ty52ktq2t"
+path="res://.godot/imported/AsteroidCity.dialogue-0dc43ae2f0f6ecb41234d3601b443be1.tres"
+
+[deps]
+
+source_file="res://Content/Dialogues/AsteroidCity.dialogue"
+dest_files=["res://.godot/imported/AsteroidCity.dialogue-0dc43ae2f0f6ecb41234d3601b443be1.tres"]
+
+[params]
+
+defaults=true

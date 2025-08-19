@@ -1,0 +1,8 @@
+~ start
+
+You see an ugly shack floating in space.
+if State.MainProgression == "DELIVER_TO_SHACK":
+	do State.ClearObjective()
+	YOU: What an odd taste in
+	
+	

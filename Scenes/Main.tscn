@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl6g8cl5l3x8s"]
+[gd_scene load_steps=11 format=3 uid="uid://cl6g8cl5l3x8s"]
 
 [ext_resource type="Script" uid="uid://dthdg5jq5kvlw" path="res://Scripts/CustomCamera.gd" id="1_kln2b"]
 [ext_resource type="PackedScene" uid="uid://nbsmaium6rru" path="res://Prefabs/Player.tscn" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://cvp8a1hc5swb1" path="res://Prefabs/Planet.tscn" id="2_idj7w"]
 [ext_resource type="PackedScene" uid="uid://datulnnuqspkj" path="res://Prefabs/InfoPanel.tscn" id="4_rgh2o"]
+[ext_resource type="Resource" uid="uid://dqm2o48utnpfa" path="res://Content/Planets/Planet_UglyHouse.tres" id="4_v1gob"]
+[ext_resource type="PackedScene" uid="uid://bacj7tth2vtq0" path="res://Prefabs/ObjectivePanel.tscn" id="5_pbw6q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_idj7w"]
 size = Vector3(200, 0.1, 200)
@@ -33,7 +35,7 @@ volumetric_fog_enabled = true
 [node name="Node3D" type="Node3D"]
 
 [node name="CustomCamera" type="Camera3D" parent="." node_paths=PackedStringArray("FollowObject")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.514, 19.46, 0.07)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 75.7967, 19.46, 86.3343)
 script = ExtResource("1_kln2b")
 FollowObject = NodePath("../Player")
 
@@ -50,10 +52,15 @@ transform = Transform3D(0.703593, -0.0370043, 0.709639, -0.710603, -0.0366393, 0
 light_color = Color(0.13913, 0.0686373, 0.427084, 1)
 
 [node name="Player" parent="." node_paths=PackedStringArray("PlaneNodePath") instance=ExtResource("1_r150o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.4971, 0, 90.6051)
 PlaneNodePath = NodePath("../Plane")
 
 [node name="Planet" parent="." instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.7034, 0, 70.2817)
+
+[node name="Planet2" parent="." instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1814, 0, 70.2817)
+PlanetDataRef = ExtResource("4_v1gob")
 
 [node name="Plane" type="CSGMesh3D" parent="."]
 mesh = SubResource("BoxMesh_idj7w")
@@ -62,6 +69,8 @@ material = SubResource("StandardMaterial3D_kln2b")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InfoPanel" parent="CanvasLayer" instance=ExtResource("4_rgh2o")]
+
+[node name="ObjectivePanel" parent="CanvasLayer" instance=ExtResource("5_pbw6q")]
 
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477871, 0)

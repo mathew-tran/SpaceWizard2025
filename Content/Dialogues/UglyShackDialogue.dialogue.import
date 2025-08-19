@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cfmeg7tqrgdfu"
+path="res://.godot/imported/UglyShackDialogue.dialogue-5477cecfe504f89fd2ed95182229f6e1.tres"
+
+[deps]
+
+source_file="res://Content/Dialogues/UglyShackDialogue.dialogue"
+dest_files=["res://.godot/imported/UglyShackDialogue.dialogue-5477cecfe504f89fd2ed95182229f6e1.tres"]
+
+[params]
+
+defaults=true
